@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  padding: 10px 15px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  column-gap: 10px;
+}
+
+.btn {
+  font-size: 24px;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn_active {
+  color: lightblue;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+}
