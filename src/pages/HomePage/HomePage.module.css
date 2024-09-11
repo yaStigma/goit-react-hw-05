@@ -1,6 +1,11 @@
 .container {
   margin-top: 15px;
   margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {

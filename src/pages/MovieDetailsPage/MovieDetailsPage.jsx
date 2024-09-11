@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useEffect, useRef, useState } from "react"
+import { useLocation, useParams } from "react-router-dom"
 import { getMovieDetails } from "../../TMDB-api";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import css from "./MovieDetailsPage.module.css";
@@ -13,6 +13,10 @@ export default function MovieDetailsPage (){
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const {movieId} = useParams();
+
+  const location  = useLocation()
+
+const backLinkRef = useRef(location.state ?? "/movies")
 
   useEffect(() => {
     async function fetchData() {
@@ -44,7 +48,7 @@ export default function MovieDetailsPage (){
     
     {movieDetails && (
       <>
-      <Link to="/"> <button className={css.btn} type="button"> Home</button>  </Link> 
+      <Link to={backLinkRef.current}> <button className={css.btn} type="button"> Back to movies </button>  </Link> 
 
         <div className={css.container}>
           <div className={css.img}>

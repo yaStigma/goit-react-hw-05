@@ -15,11 +15,16 @@ const options = {
   };
 
 
- export const getSearchMovie = async () => {
-  const response = await axios.get('https://api.themoviedb.org/3/search/movie', options );
-    
+ export const getSearchMovie = async (query) => {
+  const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}`, options );
+
     return response.data
  };
+
+
+
+
+
 
  export const getMovieDetails = async (movieId) => {
   const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, options); 

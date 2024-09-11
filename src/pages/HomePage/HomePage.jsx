@@ -16,6 +16,7 @@ export default function HomePage () {
         setError(false);
         const data = await getTrendingMovies();
         setTrendingMovies(data.results); 
+        console.log(data.results);
       } catch (error) {
         console.error("Failed to fetch trending movies:", error); 
         setError(true);
@@ -34,7 +35,7 @@ export default function HomePage () {
       <h1>Trending Today</h1>
       {loading && <div>Loading, pleace wait... </div>}
       {error && <div>Error, pleace wait... </div>}
-      <MovieList trendingMovies={trendingMovies}/>
+      <MovieList movies={trendingMovies}/>
     </div>
   )
 }
