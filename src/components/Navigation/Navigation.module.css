@@ -1,8 +1,10 @@
 .header {
   width: 100%;
   padding: 10px 15px;
-  border-bottom: 1px solid #333;
+  border-bottom: 2px solid #8991c7;
   display: flex;
+  justify-content: center;
+  align-items: center;
   column-gap: 10px;
 }
 
@@ -14,7 +16,7 @@
 }
 
 .btn_active {
-  color: lightblue;
+  color: #8991c7;
   font-size: 24px;
   text-decoration: none;
   font-weight: bold;
