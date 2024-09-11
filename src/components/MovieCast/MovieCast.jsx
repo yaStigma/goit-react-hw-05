@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getMovieCredits } from "../../TMDB-api";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const [movieCredits, setMovieCredits] = useState(null);
@@ -15,8 +16,8 @@ export default function MovieCast() {
         setLoading(true);
         setError(false);
         const data = await getMovieCredits(movieId); 
-        setMovieCredits(data); 
-     console.log(data);
+        setMovieCredits(data.cast); 
+     console.log(data.cast);
       } catch (error) {
         console.error("Failed to fetch movie details:", error);
         setError(true);
@@ -37,20 +38,32 @@ export default function MovieCast() {
     {error && <NotFoundPage/>}
     
     {movieCredits && (
-      <>
-<ul>
-  {movieCredits.map(({cast}) => (
-    <li key={cast.id}>
-    <div>
-      <img src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`} alt={cast.name} />
-<h4>{cast.name}</h4>
-<p>Character: {cast.character}</p>
+      <div className={css.container}>
+<ul className={css.list}>
+  {movieCredits.map((castMember) => (
+    <li key={castMember.id}>
+    <div className={css.box}>
+    {castMember.profile_path ? (
+                  <img className={css.img}
+                    src={`https://image.tmdb.org/t/p/w500${castMember.profile_path}`}
+                    alt={castMember.name}
+                  />
+                ) : (
+                  <img className={css.img}
+                    src="https://via.placeholder.com/150"
+                    alt={castMember.name}
+                  />
+                )}
+                <div>
+<h4>{castMember.name}</h4>
+<p>Character: {castMember.character}</p>
+    </div>
     </div>
   </li>
   ))}
   
 </ul>
-      </>
+      </div>
     )}
   </div>
   )

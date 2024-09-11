@@ -1,0 +1,28 @@
+.container {
+  margin-top: 15px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.list {
+  list-style-type: none;
+  width: 100%;
+  padding: 10px 15px;
+  border-bottom: 2px solid #8991c7;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: 10px;
+  flex-direction: column;
+}
+.img {
+  width: 150px;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

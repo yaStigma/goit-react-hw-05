@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getMovieReviews } from "../../TMDB-api";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-
+import css from "./MovieReviews.module.css";
 
 
 
@@ -19,7 +19,7 @@ export default function MovieReviews() {
         setLoading(true);
         setError(false);
         const data = await getMovieReviews(movieId); 
-        setReviews(data); 
+        setReviews(data.results); 
      console.log(data);
       } catch (error) {
         console.error("Failed to fetch movie details:", error);
@@ -41,19 +41,19 @@ export default function MovieReviews() {
     {error && <NotFoundPage/>}
     
     {reviews && (
-      <>
-<ul>
-  {reviews.map(({results}) => (
-    <li key={results.id}>
+      <div className={css.container}>
+<ul >
+  {reviews.map((results) => (
+    <li key={results.id} className={css.list}>
     <div>
       <h4>{results.author}</h4>
-<p> {results.content}</p>
+<p className={css.text} > {results.content}</p>
     </div>
   </li>
   ))}
   
 </ul>
-      </>
+      </div>
     )}
   </div>
   )
